@@ -1,0 +1,74 @@
+/* Admin.css */
+
+.admin-login, .admin-dashboard, .project-form {
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.admin-login h2, .admin-dashboard h2, .project-form h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.admin-login input,
+.project-form input,
+.project-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.admin-login button,
+.project-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.admin-login button:hover,
+.project-form button:hover {
+  background-color: #0056b3;
+}
+
+.project-list {
+  margin-top: 20px;
+}
+
+.project-card {
+  padding: 15px;
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  background-color: white;
+}
+
+.project-card h4 {
+  margin: 0 0 8px;
+}
+
+.project-card a,
+.project-card button {
+  margin-right: 10px;
+  text-decoration: none;
+  font-size: 14px;
+  color: #007bff;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.project-card button:hover {
+  color: red;
+}

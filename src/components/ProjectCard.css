@@ -1,0 +1,32 @@
+.proj-imgbx {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.banner-media {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+  border-radius: 10px;
+}
+
+.proj-imgbx:hover .banner-media {
+  transform: scale(1.05);
+}
+
+.proj-txtx {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  z-index: 2;
+}
