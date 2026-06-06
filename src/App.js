@@ -8,10 +8,16 @@ import { Skills } from "./components/Skills";
 import { Projects } from "./components/Projects";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
+import { Experience } from "./components/Experience";
+import { Certifications } from "./components/Certifications";
+import { Education } from "./components/Education";
 import AdminLogin from "./components/AdminLogin";
 import AdminDashboard from "./components/AdminDashboard";
 import ProjectForm from "./components/ProjectForm";
+import CertificationForm from "./components/CertificationForm";
+import ExperienceForm from "./components/ExperienceForm";
 import ProjectDetails from "./components/ProjectDetails"; // make sure this exists
+import ProtectedRoute from "./components/ProtectedRoute"; // make sure this exists
 
 function App() {
   return (
@@ -23,8 +29,11 @@ function App() {
             <>
               <NavBar />
               <Banner />
+              <Experience />
               <Skills />
-              <Projects />
+              <Projects />  
+              <Certifications />
+              <Education />
               <Contact />
               <Footer />
             </>
@@ -32,10 +41,18 @@ function App() {
           
           {/* Admin Routes */}
           <Route path="/secret-admin" element={<AdminLogin />} />
-          <Route path="/secret-admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/secret-admin/dashboard" element={<ProtectedRoute><AdminDashboard /> </ProtectedRoute>} />
           <Route path="/secret-admin/add" element={<ProjectForm />} />
           <Route path="/secret-admin/edit/:id" element={<ProjectForm isEdit={true} />} />
+<Route
+ path="/secret-admin/add-certification"
+ element={<CertificationForm />}
+/>
 
+<Route
+ path="/secret-admin/add-experience"
+ element={<ExperienceForm />}
+/>
           {/* Project Detail Page */}
           <Route path="/project/:id" element={<ProjectDetails />} />
         </Routes>

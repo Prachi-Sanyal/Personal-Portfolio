@@ -1,32 +1,64 @@
-.proj-imgbx {
-  position: relative;
-  cursor: pointer;
+.project-card {
+  margin-bottom: 30px;
+}
+
+.project-card-box {
+  background: #0a0a0f;
+  border-radius: 18px;
   overflow: hidden;
-  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 100%;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+/* Hover effect */
+.project-card-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
 }
 
 .banner-media {
   width: 100%;
-  height: auto;
-  transition: transform 0.3s ease;
-  border-radius: 10px;
+  height: 200px;
+  object-fit: cover;
 }
 
-.proj-imgbx:hover .banner-media {
-  transform: scale(1.05);
+.project-content {
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
 }
 
-.proj-txtx {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  text-align: center;
-  padding: 10px;
-  font-size: 16px;
-  font-weight: 500;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  z-index: 2;
+.project-text {
+  flex: 1;
+}
+
+.project-text h4 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f1f1f;
+}
+
+.project-text p {
+  margin: 0;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+
+}
+
+.project-icon {
+  font-size: 22px;
+  color: #AA367C;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.project-card-box:hover .project-icon {
+  transform: scale(1.15);
+  transition: 0.3s ease;
 }

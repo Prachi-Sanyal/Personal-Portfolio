@@ -12,7 +12,7 @@ const AdminLogin = () => {
     try {
       await loginAdmin({ username, password });
       sessionStorage.setItem("isAdmin", true);
-      navigate('/admin/dashboard');
+      navigate('/secret-admin/dashboard');
     } catch (err) {
       alert("Login failed");
     }

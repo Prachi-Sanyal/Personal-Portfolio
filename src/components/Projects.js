@@ -5,6 +5,7 @@ import { getProjects } from "../utils/api"; // make sure this uses /api/projects
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 import colorSharp2 from "../assets/img/color-sharp2.png";
+import './ProjectCard.css';
 
 export const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -25,35 +26,53 @@ export const Projects = () => {
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                 <h2>Projects</h2>
-                <p>Explore all projects categorized by platform.</p>
-                <Tab.Container id="projects-tabs" defaultActiveKey="web">
+<p>
+A collection of software development and data analytics projects
+built using Python, SQL, Power BI, Tableau, React, PHP, and
+modern development tools.
+</p>                <Tab.Container id="projects-tabs" defaultActiveKey="Data Analytics">
                   <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center">
-                    <Nav.Item><Nav.Link eventKey="web">Web App</Nav.Link></Nav.Item>
-                    <Nav.Item><Nav.Link eventKey="desktop">Desktop App</Nav.Link></Nav.Item>
-                    <Nav.Item><Nav.Link eventKey="wordpress">WordPress</Nav.Link></Nav.Item>
+                    <Nav.Item><Nav.Link eventKey="Data Analytics">Data Analytics</Nav.Link></Nav.Item>
+                    <Nav.Item><Nav.Link eventKey="Development">Development</Nav.Link></Nav.Item>
+                    <Nav.Item><Nav.Link eventKey="AI/ML">AI/ML</Nav.Link></Nav.Item>
                   </Nav>
                   <Tab.Content>
-                    <Tab.Pane eventKey="web">
+                    <Tab.Pane eventKey="Data Analytics">
                       <Row>
-                        {filterByCategory("Web").map((project, index) => (
+                        {filterByCategory("Data Analytics").map((project, index) => (
                           <ProjectCard key={index} project={project} />
                         ))}
                       </Row>
                     </Tab.Pane>
-                    <Tab.Pane eventKey="desktop">
+                    <Tab.Pane eventKey="Development">
                       <Row>
-                        {filterByCategory("Desktop").map((project, index) => (
+                        {filterByCategory("Development").map((project, index) => (
                           <ProjectCard key={index} project={project} />
                         ))}
                       </Row>
                     </Tab.Pane>
-                    <Tab.Pane eventKey="wordpress">
+
+
+                    <Tab.Pane eventKey="AI/ML">
+  <div className="coming-soon">
+    <h4>AI/ML Projects Coming Soon</h4>
+    <p>
+      Currently building projects in Machine Learning and expanding
+      my skills in AI technologies.
+    </p>
+  </div>
+</Tab.Pane>
+
+                   {/*
+                    <Tab.Pane eventKey="AI/ML">
                       <Row>
-                        {filterByCategory("WordPress").map((project, index) => (
+                        {filterByCategory("AI/ML").map((project, index) => (
                           <ProjectCard key={index} project={project} />
                         ))}
                       </Row>
                     </Tab.Pane>
+                    */}
+
                   </Tab.Content>
                 </Tab.Container>
               </div>}

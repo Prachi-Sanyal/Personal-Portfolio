@@ -1,0 +1,82 @@
+.education-section {
+  padding: 90px 0;
+  background: linear-gradient(
+    135deg,
+    #0a0a0f 0%,
+    #1a1a2e 50%,
+    #16213e 100%
+  );
+}
+
+.education-section h2 {
+  color: white;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.education-card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.education-card h3 {
+  color: white;
+}
+
+.education-card p {
+  color: #cfcfcf;
+}
+
+.education-card span {
+  color: #AA367C;
+  font-weight: 600;
+}
+
+.education-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.edu-icon {
+  font-size: 28px;
+  color: #aa367c;
+}
+
+.education-card h5 {
+  color: #d1d1d1;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.achievement-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  padding: 8px 16px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.15),
+    rgba(255, 193, 7, 0.08)
+  );
+
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 30px;
+
+  color: #ffd700;
+  font-weight: 600;
+}
+
+.achievement-badge svg {
+  font-size: 18px;
+}

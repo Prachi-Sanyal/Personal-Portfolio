@@ -20,14 +20,44 @@ export const ProjectDetail = () => {
   return (
     <Container className="project-detail">
       <Button variant="secondary" onClick={() => navigate(-1)} className="mt-4">← Back</Button>
-      <h2 className="mt-4 mb-2">{project.name}</h2>
-      <p className="mb-3">{project.description}</p>
-      {project.url && (
-        <a href={project.url} target="_blank" rel="noreferrer" className="btn btn-primary mb-4">
-          View Live Project
-        </a>
-      )}
+      <h2 className="mt-4 mb-2">{project.title}</h2>
+<p className="detail-description">
+  {project.detailedDescription}
+</p>  
+<div className="tech-stack">
+  {project.technologies?.map((tech, index) => (
+    <span key={index} className="tech-badge">
+      {tech}
+    </span>
+  ))}
+</div>
 
+    <div className="project-links">
+
+  {project.githubUrl && (
+    <a
+      href={project.githubUrl}
+      target="_blank"
+      rel="noreferrer"
+      className="btn btn-outline-light"
+    >
+      GitHub
+    </a>
+  )}
+
+  {project.liveUrl && (
+    <a
+      href={project.liveUrl}
+      target="_blank"
+      rel="noreferrer"
+      className="btn btn-primary"
+    >
+      Live Demo
+    </a>
+  )}
+
+</div>
+{/*
       {project.screenshots?.map((url, index) => {
         const isEven = index % 2 === 0;
         const desc = project.screenshotDescriptions?.[index] || "";
@@ -43,11 +73,11 @@ export const ProjectDetail = () => {
                     <img src={url} alt={`Screenshot ${index + 1}`} className="screenshot-media" />
                   )}
                 </Col>
-                <Col md={6}><p>{desc}</p></Col>
+                <Col md={6}><p className="screenshot-description">{desc}</p></Col>
               </>
             ) : (
               <>
-                <Col md={6}><p>{desc}</p></Col>
+                <Col md={6}><p className="screenshot-description">{desc}</p></Col>
                 <Col md={6}>
                   {isVideo(url) ? (
                     <video src={url} controls className="screenshot-media" />
@@ -60,6 +90,72 @@ export const ProjectDetail = () => {
           </Row>
         );
       })}
+
+      */}
+{project.screenshots?.map((url, index) => {
+  const desc = project.screenshotDescriptions?.[index] || "";
+  const isEven = index % 2 === 0;
+
+  return (
+    <Row key={index} className="mb-5 align-items-center">
+
+      {isEven ? (
+        <>
+          {/* Desktop & Mobile: Image First */}
+          <Col md={6} xs={12}>
+            {isVideo(url) ? (
+              <video src={url} controls className="screenshot-media" />
+            ) : (
+              <img
+                src={url}
+                alt={`Screenshot ${index + 1}`}
+                className="screenshot-media"
+              />
+            )}
+          </Col>
+
+          <Col md={6} xs={12}>
+            <p className="screenshot-description">
+              {desc}
+            </p>
+          </Col>
+        </>
+      ) : (
+        <>
+          {/* Desktop: Description Left */}
+          {/* Mobile: Description moves below image */}
+          <Col
+            md={6}
+            xs={12}
+            className="order-2 order-md-1"
+          >
+            <p className="screenshot-description">
+              {desc}
+            </p>
+          </Col>
+
+          <Col
+            md={6}
+            xs={12}
+            className="order-1 order-md-2"
+          >
+            {isVideo(url) ? (
+              <video src={url} controls className="screenshot-media" />
+            ) : (
+              <img
+                src={url}
+                alt={`Screenshot ${index + 1}`}
+                className="screenshot-media"
+              />
+            )}
+          </Col>
+        </>
+      )}
+
+    </Row>
+  );
+})}
+
     </Container>
   );
 };

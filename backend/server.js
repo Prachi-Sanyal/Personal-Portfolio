@@ -4,6 +4,9 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const cors = require('cors');
 const projectRoutes = require('./routes/projectRoutes');
+const certificationRoutes = require("./routes/certificationRoutes");
+const experienceRoutes = require("./routes/experienceRoutes");
+
 const nodemailer = require('nodemailer');
 
 const app = express();
@@ -37,6 +40,20 @@ mongoose.connect(process.env.MONGO_URI, {
 
 // Project API Routes (upload, fetch)
 app.use('/api/projects', projectRoutes);
+app.use("/api/certifications", certificationRoutes);
+app.use("/api/experience", experienceRoutes);
+
+app.get("/admin/check-auth", (req, res) => {
+  if (req.session && req.session.isAdmin) {
+    return res.json({
+      authenticated: true
+    });
+  }
+
+  res.status(401).json({
+    authenticated: false
+  });
+});
 
 // Admin Login Route
 app.post('/admin/login', (req, res) => {
@@ -50,6 +67,16 @@ app.post('/admin/login', (req, res) => {
   } else {
     res.status(401).json({ message: 'Unauthorized' });
   }
+});
+
+app.post("/admin/logout", (req, res) => {
+  req.session.destroy(() => {
+    res.clearCookie("connect.sid");
+
+    res.json({
+      message: "Logged out"
+    });
+  });
 });
 
 // ----------- Contact Form Email API (Nodemailer) --------------- //

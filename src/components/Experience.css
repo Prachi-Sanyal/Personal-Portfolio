@@ -1,0 +1,29 @@
+.experience-section{
+  padding:90px 0;
+  background:#0f1724;
+}
+
+.experience-section h2{
+  text-align:center;
+  color:white;
+  margin-bottom:50px;
+}
+
+.experience-card{
+  background:rgba(255,255,255,0.05);
+  border-radius:20px;
+  padding:25px;
+  margin-bottom:20px;
+}
+
+.experience-card h3{
+  color:white;
+}
+
+.experience-card h4{
+  color:#AA367C;
+}
+
+.experience-card p{
+  color:#d0d0d0;
+}

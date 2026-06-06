@@ -18,28 +18,64 @@ router.post('/add', checkAdminAuth, upload.fields([
   { name: 'screenshots', maxCount: 30 }
 ]), async (req, res) => {
   try {
-    const { name, category, description, url, screenshotDescriptions } = req.body;
+    const {
+        title,
+        category,
+        shortDescription,
+        detailedDescription,
+        technologies,
+        githubUrl,
+        liveUrl,
+        screenshotDescriptions,
+        featured
+      } = req.body;
 
-    const bannerImage = req.files['bannerImage'][0].path;
-    const screenshots = req.files['screenshots']?.map(file => file.path) || [];
+      const bannerImage =
+        req.files?.bannerImage?.[0]?.path || "";
 
-    const newProject = new Project({
-      name,
-      category,
-      description,
-      url,
-      bannerImage,
-      screenshots,
-      screenshotDescriptions: JSON.parse(screenshotDescriptions || "[]")
-    });
+      const screenshots =
+        req.files?.screenshots?.map(file => file.path) || [];
 
-    await newProject.save();
-    res.status(201).json({ message: "Project added successfully" });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+      const project = new Project({
+        title,
+        category,
+        shortDescription,
+        detailedDescription,
+
+        technologies: technologies
+          ? JSON.parse(technologies)
+          : [],
+
+        githubUrl,
+        liveUrl,
+
+        bannerImage,
+
+        screenshots,
+
+        screenshotDescriptions:
+          screenshotDescriptions
+            ? JSON.parse(screenshotDescriptions)
+            : [],
+
+        featured: featured === "true"
+      });
+
+      await project.save();
+
+      res.status(201).json({
+        success: true,
+        project
+      });
+
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        error: error.message
+      });
+    }
   }
-});
-
+);
 // Get all projects (public)
 router.get('/all', async (req, res) => {
   try {
@@ -64,14 +100,57 @@ router.get('/:id', async (req, res) => {
 
 
 // Update existing project
-router.put('/:id', checkAdminAuth, async (req, res) => {
-  try {
-    const updated = await Project.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    res.json(updated);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+router.put(
+  '/:id',
+  checkAdminAuth,
+  upload.fields([
+    { name: 'bannerImage', maxCount: 1 },
+    { name: 'screenshots', maxCount: 30 }
+  ]),
+  async (req, res) => {
+    try {
+
+      const updateData = { ...req.body };
+
+      if (req.files?.bannerImage) {
+        updateData.bannerImage =
+          req.files.bannerImage[0].path;
+      }
+
+      if (req.files?.screenshots) {
+        updateData.screenshots =
+          req.files.screenshots.map(file => file.path);
+      }
+
+      if (updateData.technologies) {
+        updateData.technologies =
+          JSON.parse(updateData.technologies);
+      }
+
+      if (updateData.screenshotDescriptions) {
+        updateData.screenshotDescriptions =
+          JSON.parse(updateData.screenshotDescriptions);
+      }
+
+      const updatedProject =
+        await Project.findByIdAndUpdate(
+          req.params.id,
+          updateData,
+          {
+            new: true,
+            runValidators: true
+          }
+        );
+
+      res.json(updatedProject);
+
+    } catch (error) {
+      res.status(500).json({
+        error: error.message
+      });
+    }
   }
-});
+);
 
 
 // Delete a project

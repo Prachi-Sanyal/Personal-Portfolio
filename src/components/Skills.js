@@ -1,4 +1,123 @@
 import React from "react";
+import "./Skills.css";
+import {
+  SiPython,
+  SiMysql,
+  SiMongodb,
+  SiJavascript,
+  SiReact,
+  SiPhp,
+  SiTableau,
+  SiPostman,
+  SiDocker,
+  SiAmazon,
+  SiGithub
+} from "react-icons/si";
+
+import {
+  FaGitAlt,
+  FaDatabase,
+  FaChartBar,
+  FaCode,
+  FaBrain,
+  FaMicrosoft
+} from "react-icons/fa";
+
+export const Skills = () => {
+  const skillCategories = [
+  {
+    title: "Programming Languages",
+    skills: [
+      { name: "Python", icon: <SiPython /> },
+      { name: "SQL", icon: <FaDatabase /> },
+      { name: "PHP", icon: <SiPhp /> },
+      { name: "JavaScript", icon: <SiJavascript /> },
+    ],
+  },
+
+  {
+    title: "Data Analytics",
+    skills: [
+      { name: "Excel", icon: "📊" },
+      { name: "Power BI", icon: <FaChartBar /> },
+      { name: "Tableau", icon: <FaChartBar /> },
+      { name: "Pandas", icon: <FaCode /> },
+      { name: "NumPy", icon: <FaCode/> },
+    ],
+  },
+
+  {
+    title: "Databases",
+    skills: [
+      { name: "MySQL", icon: <SiMysql /> },
+      { name: "MongoDB", icon: <SiMongodb /> },
+      { name: "PostgreSQL", icon: <FaDatabase /> },
+    ],
+  },
+
+  {
+    title: "Tools",
+    skills: [
+      { name: "Git", icon: <FaGitAlt/> },
+      { name: "GitHub", icon: <SiGithub /> },
+      { name: "Postman", icon: <SiPostman /> },
+      { name: "VS Code", icon: <FaCode /> },
+    ],
+  },
+
+  {
+    title: "Currently Learning",
+    skills: [
+      { name: "AWS Cloud", icon: <FaMicrosoft /> },
+      { name: "Docker", icon: <SiDocker /> },
+      { name: "Machine Learning", icon: <FaBrain /> },
+    ],
+  },
+];
+
+  return (
+    <section className="skill" id="skills">
+      <div className="container">
+        <div className="skill-bx">
+
+          <h2>Skills</h2>
+
+          <span className="skill-desc">
+            
+Hands-on experience with data analytics, databases,
+programming, visualization tools, and modern development
+workflows through real-world projects and continuous learning.
+
+          </span>
+          <br></br><br></br>
+
+          <div className="skills-grid">
+            {skillCategories.map((category, index) => (
+              <div className="skill-card" key={index}>
+                <h3>{category.title}</h3>
+
+                <div className="skill-tags">
+                  {category.skills.map((skill, i) => (
+                    <span key={i} className="skill-tag">
+                      <span className="skill-icon">{skill.icon}</span>
+    {skill.name}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
+
+{/*
+import React from "react";
 
 import languages from "../assets/img/Untitled design (1).png";
 import frameworks from "../assets/img/Untitled design (2).png";
@@ -124,13 +243,13 @@ Learning: AWS Cloud, CI/CD Pipeline`,
             <SkillCard key={index} title={category.title} skills={category.skills} image={category.image} />
           ))}
         </Carousel>
-        */}
+        
       </div>
     </section>
   );
 };
 
-
+*/}
 
 {/*
   import meter1 from "../assets/img/meter1.svg";
@@ -198,3 +317,4 @@ export const Skills = () => {
   )
 }
 */}
+
