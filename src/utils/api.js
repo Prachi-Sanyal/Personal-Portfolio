@@ -1,14 +1,19 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'http://localhost:5000/api/projects', withCredentials: true });
-const AUTH = axios.create({ baseURL: 'http://localhost:5000/admin', withCredentials: true });
+const BASE_URL =
+  process.env.REACT_APP_API_URL;
+const API = axios.create({   baseURL: `${BASE_URL}/api/projects`
+, withCredentials: true });
+const AUTH = axios.create({   baseURL: `${BASE_URL}/api/admin`
+, withCredentials: true });
 const CERT_API = axios.create({
-  baseURL: "http://localhost:5000/api/certifications",
+    baseURL: `${BASE_URL}/api/certifications`,
   withCredentials: true,
 });
 
 const EXP_API = axios.create({
-  baseURL: "http://localhost:5000/api/experience",
+    baseURL: `${BASE_URL}/api/experience`
+,
   withCredentials: true,
 });
 

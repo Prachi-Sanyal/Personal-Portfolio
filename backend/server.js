@@ -14,15 +14,18 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: "http://localhost:3000",   // exact frontend origin
-  credentials: true                  // allow credentials (cookies/session)
+  origin: [
+    "http://localhost:3000",
+    process.env.FRONTEND_URL
+  ],
+  credentials: true
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Session setup
 app.use(session({
-  secret: 'verysecretkey', // use env in production
+  secret: process.env.SESSION_SECRET, // use env in production
   resave: false,
   saveUninitialized: true,
    cookie: {
@@ -32,10 +35,7 @@ app.use(session({
 }));
 
 // MongoDB connection
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => console.log("✅ MongoDB connected"))
+mongoose.connect(process.env.MONGO_URI).then(() => console.log("✅ MongoDB connected"))
   .catch(err => console.error("❌ MongoDB connection error:", err));
 
 // Project API Routes (upload, fetch)
@@ -43,7 +43,7 @@ app.use('/api/projects', projectRoutes);
 app.use("/api/certifications", certificationRoutes);
 app.use("/api/experience", experienceRoutes);
 
-app.get("/admin/check-auth", (req, res) => {
+app.get("/api/admin/check-auth", (req, res) => {
   if (req.session && req.session.isAdmin) {
     return res.json({
       authenticated: true
@@ -56,7 +56,7 @@ app.get("/admin/check-auth", (req, res) => {
 });
 
 // Admin Login Route
-app.post('/admin/login', (req, res) => {
+app.post('/api/admin/login', (req, res) => {
   const { username, password } = req.body;
   if (
     username === process.env.ADMIN_USERNAME &&
@@ -69,7 +69,7 @@ app.post('/admin/login', (req, res) => {
   }
 });
 
-app.post("/admin/logout", (req, res) => {
+app.post("/api/admin/logout", (req, res) => {
   req.session.destroy(() => {
     res.clearCookie("connect.sid");
 

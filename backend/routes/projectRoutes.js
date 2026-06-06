@@ -12,6 +12,8 @@ const checkAdminAuth = (req, res, next) => {
   }
 };
 
+
+
 // Add a new project (admin-only)
 router.post('/add', checkAdminAuth, upload.fields([
   { name: 'bannerImage', maxCount: 1 },
