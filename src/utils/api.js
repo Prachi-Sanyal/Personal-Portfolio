@@ -2,17 +2,17 @@ import axios from 'axios';
 
 const BASE_URL =
   process.env.REACT_APP_API_URL;
-const API = axios.create({   baseURL: `${BASE_URL}/api/projects`
+const API = axios.create({   baseURL: `${BASE_URL}/projects`
 , withCredentials: true });
-const AUTH = axios.create({   baseURL: `${BASE_URL}/api/admin`
+const AUTH = axios.create({   baseURL: `${BASE_URL}/admin`
 , withCredentials: true });
 const CERT_API = axios.create({
-    baseURL: `${BASE_URL}/api/certifications`,
+    baseURL: `${BASE_URL}/certifications`,
   withCredentials: true,
 });
 
 const EXP_API = axios.create({
-    baseURL: `${BASE_URL}/api/experience`
+    baseURL: `${BASE_URL}/experience`
 ,
   withCredentials: true,
 });
