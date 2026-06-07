@@ -9,13 +9,33 @@ import './ProjectCard.css';
 
 export const Projects = () => {
   const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    getProjects().then(setProjects);
+ useEffect(() => {
+    getProjects()
+      .then((data) => setProjects(data))
+      .finally(() => setLoading(false));
   }, []);
 
   const filterByCategory = (category) =>
     projects.filter((project) => project.category.toLowerCase() === category.toLowerCase());
+
+ if (loading) {
+    return (
+      <section className="project" id="projects">
+        <Container>
+          <div className="text-center py-5">
+            <h4>Loading Projects...</h4>
+            <p>
+              Fetching portfolio projects and analytics dashboards.
+              Please wait a moment.
+            </p>
+          </div>
+        </Container>
+      </section>
+    );
+  }
+
 
   return (
     <section className="project" id="projects">
