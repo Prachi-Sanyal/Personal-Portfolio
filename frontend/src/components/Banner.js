@@ -82,9 +82,8 @@ export const Banner = () => {
 
 **/
 
-import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { ArrowRightCircle, Download, Award } from 'react-bootstrap-icons';
+import { ArrowRightCircle, Download } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 import './Banner.css';

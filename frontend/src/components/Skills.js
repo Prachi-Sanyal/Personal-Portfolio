@@ -5,12 +5,9 @@ import {
   SiMysql,
   SiMongodb,
   SiJavascript,
-  SiReact,
   SiPhp,
-  SiTableau,
   SiPostman,
   SiDocker,
-  SiAmazon,
   SiGithub
 } from "react-icons/si";
 
