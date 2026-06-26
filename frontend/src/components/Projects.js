@@ -72,7 +72,7 @@ modern development tools.
                       </Row>
                     </Tab.Pane>
 
-
+                                          {/*
                     <Tab.Pane eventKey="AI/ML">
   <div className="coming-soon">
     <h4>AI/ML Projects Coming Soon</h4>
@@ -82,8 +82,9 @@ modern development tools.
     </p>
   </div>
 </Tab.Pane>
+*/}
 
-                   {/*
+                   
                     <Tab.Pane eventKey="AI/ML">
                       <Row>
                         {filterByCategory("AI/ML").map((project, index) => (
@@ -91,7 +92,7 @@ modern development tools.
                         ))}
                       </Row>
                     </Tab.Pane>
-                    */}
+                    
 
                   </Tab.Content>
                 </Tab.Container>
