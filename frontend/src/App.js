@@ -29,7 +29,7 @@ function App() {
             <>
               <NavBar />
               <Banner />
-              <Experience />
+  {/*  <Experience />   */}
               <Skills />
               <Projects />  
               <Certifications />
