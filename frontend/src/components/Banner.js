@@ -87,7 +87,7 @@ import { ArrowRightCircle, Download } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 import './Banner.css';
-import resumePdf from "../assets/Prachi_Resume.pdf";
+import resumePdf from "../assets/Prachi_Resume1.pdf";
 
 export const Banner = () => {
   
